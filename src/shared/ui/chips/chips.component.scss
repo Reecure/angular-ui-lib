@@ -1,0 +1,29 @@
+@use '../../../shared/styles/variables' as *;
+
+.status-chips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6px;
+  height: 19px;
+  border-radius: 99px;
+  font-size: $font-size-xxs;
+  color: $white;
+  flex-shrink: 0;
+
+  &--green {
+    background-color: $light-green;
+  }
+
+  &--red {
+    background-color: $light-red;
+  }
+
+  &--yellow {
+    background-color: $light-yellow;
+  }
+
+  &--gray {
+    background-color: $text-color;
+  }
+}

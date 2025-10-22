@@ -1,0 +1,10 @@
+<button
+  pButton
+  [type]="buttonType"
+  (click)="handleClick()"
+  [disabled]="disabled"
+  [ngClass]="['custom-btn', 'custom-btn--' + type]"
+  [ngStyle]="style"
+>
+  <ng-content></ng-content>
+</button>

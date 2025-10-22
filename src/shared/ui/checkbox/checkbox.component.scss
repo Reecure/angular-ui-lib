@@ -1,0 +1,84 @@
+@use '../../../shared/styles/variables' as *;
+
+:host {
+  --checkbox-size: 18px;
+  --checkbox-radius: #{$border-radius-xs};
+  --checkbox-border-color: #{$grey-light};
+  --checkbox-border-color-hover: #{$main-blue};
+  --checkbox-bg-checked: #{$main-blue};
+  --checkbox-border-checked: #{$main-blue};
+  --checkbox-checkmark-color: #{$white};
+  --checkbox-label-color: #{$text-color}
+}
+
+.custom-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: $font-size-xs;
+  color: var(--checkbox-label-color);
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &.checkbox-disabled {
+    cursor: not-allowed;
+    color: var(--checkbox-border-color);
+
+    .custom-checkbox-box {
+      background-color: #fff;
+      border-color: var(--checkbox-border-color);
+    }
+
+    &.checkbox-checked .custom-checkbox-box::after {
+      border-color: var(--checkbox-border-color);
+    }
+  }
+}
+
+.custom-checkbox-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.custom-checkbox-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border: 1px solid var(--checkbox-border-color);
+  border-radius: var(--checkbox-radius);
+  background-color: $white;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--checkbox-checkmark-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+}
+
+.custom-checkbox-label {
+  line-height: 1;
+}
+
+.checkbox-checked {
+  .custom-checkbox-box {
+    background-color: var(--checkbox-bg-checked);
+    border-color: var(--checkbox-border-checked);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}

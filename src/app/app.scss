@@ -1,0 +1,22 @@
+@use './shared/styles/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.secondary-button {
+  padding: 0;
+}
+
+.status-option-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  span {
+    font-size: $font-size-xs;
+    color: $text-color;
+  }
+}

@@ -1,0 +1,69 @@
+<div class="custom-select-container" [class.is-open]="isOpen">
+  <div class="select-trigger" [class.select-trigger-open]="isOpen" (click)="toggleDropdown()">
+    <span class="trigger-text">{{ displayText }}</span>
+    <span class="trigger-arrow"></span>
+  </div>
+
+  <div class="select-panel" *ngIf="isOpen" (click)="$event.stopPropagation()">
+    <div class="panel-header" *ngIf="showHeader">
+      <app-custom-input
+        [(ngModel)]="filterValue"
+        placeholder="Пошук"
+        styleClass="select-search-input"
+      ></app-custom-input>
+    </div>
+
+    <ul class="options-list">
+
+      <li
+        class="option-item"
+        *ngIf="showSelectAllOption"
+        [class.is-selected]="allRealOptionsSelected"
+        (click)="onOptionClick(selectAllOptionObject)"
+      >
+        <div class="custom-checkbox">
+          <i class="checkmark"></i>
+        </div>
+        <div class="option-content">
+          <span class="select-all-label">{{ selectAllOptionObject[optionLabel] }}</span>
+        </div>
+      </li>
+
+      <li
+        class="option-item"
+        *ngFor="let option of (options | optionsFilter:filterValue:optionLabel)"
+        [class.is-selected]="isSelected(option)"
+        (click)="onOptionClick(option)"
+      >
+        <div class="custom-checkbox">
+          <i class="checkmark"></i>
+        </div>
+        <div class="option-content">
+          <ng-container *ngIf="!itemTemplate; else customItem">
+            {{ option[optionLabel] }}
+          </ng-container>
+          <ng-template #customItem [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: option }"></ng-template>
+        </div>
+      </li>
+    </ul>
+
+    <div class="panel-footer" *ngIf="showFooter">
+      <app-custom-button
+        type="outlined-gray"
+        (clicked)="selectAll()"
+        [style.width]="'100%'"
+      >
+        <img src="/assets/icons/select/ic_round-done-all.svg" alt="accept" width="16" height="16">
+        Вибрати все
+      </app-custom-button>
+      <app-custom-button
+        type="outlined-gray"
+        (clicked)="clearAll()"
+        [style.width]="'100%'"
+      >
+        <img src="/assets/icons/select/ic_round-clear.svg" alt="discard" width="16" height="16">
+        Прибрати все
+      </app-custom-button>
+    </div>
+  </div>
+</div>

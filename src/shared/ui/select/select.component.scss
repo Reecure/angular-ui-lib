@@ -1,0 +1,185 @@
+@use '../../../shared/styles/variables' as *;
+
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+
+  --select-bg: #{$white};
+  --select-border-color: transparent;
+  --select-border-color-hover: #{$main-blue};
+  --select-border-color-open: #{$main-blue};
+  --select-trigger-height: 28px;
+  --select-trigger-padding: 6px;
+  --select-radius: #{$border-radius-sm};
+  --select-shadow: #{$input-shadow};
+  --select-text-color: #{$text-color};
+  --select-font-size: #{$font-size-xs};
+
+  --panel-bg: #{$white};
+  --panel-radius: #{$border-radius-md};
+  --panel-shadow: #{$modal-shadow};
+  --panel-header-padding: 8px;
+  --panel-header-border: 1px solid #eee;
+  --panel-list-padding: 12px 12px 8px 12px;
+  --panel-footer-padding: 0px 12px 12px 12px;
+  --panel-footer-gap: 8px;
+
+  --option-padding: 2px;
+  --option-hover-bg: #f5f5f5;
+
+  --checkbox-size: 12px;
+  --checkbox-border: 2px solid #{$text-color};
+  --checkbox-radius: #{$border-radius-xxs};
+  --checkbox-margin: 6px;
+  --checkbox-selected-border: #{$main-blue};
+  --checkbox-checkmark-color: #{$main-blue};
+}
+
+.custom-select-container {
+  .select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--select-trigger-height);
+    padding: var(--select-trigger-padding);
+    background-color: var(--select-bg);
+    border-radius: var(--select-radius);
+    box-shadow: var(--select-shadow);
+    border: 1px solid var(--select-border-color) !important;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: var(--select-border-color-hover);
+    }
+
+    .trigger-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: var(--select-font-size);
+      color: var(--select-text-color);
+    }
+
+    .trigger-arrow {
+      border: solid var(--select-text-color);
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+      transition: transform 0.2s;
+    }
+  }
+
+  .select-trigger-open {
+    border-color: var(--select-border-color-open) !important;
+
+    .trigger-arrow {
+      transform: rotate(-135deg);
+    }
+  }
+
+  .select-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 300px;
+    z-index: 1000;
+    background-color: var(--panel-bg);
+    border-radius: var(--panel-radius);
+    box-shadow: var(--panel-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .panel-header {
+      padding: var(--panel-header-padding);
+      border-bottom: var(--panel-header-border);
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: var(--panel-list-padding);
+      max-height: 250px;
+      overflow-y: auto;
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: var(--option-padding);
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-radius: var(--checkbox-radius);
+
+        &:hover {
+          background-color: var(--option-hover-bg);
+        }
+
+        .custom-checkbox {
+          width: var(--checkbox-size);
+          height: var(--checkbox-size);
+          border: var(--checkbox-border);
+          border-radius: var(--checkbox-radius);
+          margin-right: var(--checkbox-margin);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: border-color 0.2s;
+
+          .checkmark {
+            display: none;
+            width: 2px;
+            height: 4px;
+            border: solid var(--checkbox-checkmark-color);
+            border-width: 0 1px 1px 0;
+            transform: rotate(45deg);
+          }
+        }
+
+        .option-content {
+          flex-grow: 1;
+          font-size: var(--select-font-size);
+          color: var(--select-text-color);
+        }
+
+        .select-all-label {
+          font-size: var(--select-font-size);
+          color: var(--select-text-color);
+        }
+
+        &.is-selected {
+          .custom-checkbox {
+            border-color: var(--checkbox-selected-border);
+
+            .checkmark {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--panel-footer-gap);
+      padding: var(--panel-footer-padding);
+
+      ::ng-deep .custom-btn {
+        height: 32px !important;
+      }
+
+      .footer-btn {
+        width: 100% !important;
+      }
+    }
+  }
+}

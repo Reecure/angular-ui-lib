@@ -1,0 +1,28 @@
+@use '../../../shared/styles/variables' as *;
+
+$level-colors: (
+  1: #5FC84A,
+  2: #8BD84F,
+  3: #FFC805,
+  4: #FFA319,
+  5: #E10025,
+);
+
+.level-indicator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: $border-radius-circle;
+  color: $white;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  font-size: $font-size-xs;
+}
+
+@each $level, $color in $level-colors {
+  .level-indicator-container[data-level="#{$level}"] {
+    background-color: $color;
+  }
+}

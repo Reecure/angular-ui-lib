@@ -1,0 +1,29 @@
+<p-selectButton
+  [options]="options"
+  [ngModel]="value"
+  (ngModelChange)="onValueChange($event)"
+  optionValue="value"
+  [unselectable]="false"
+>
+  <ng-template let-option pTemplate="item">
+    <div class="toggle-option">
+      <img
+        *ngIf="option.svgIcon"
+        [ngSrc]="option.svgIcon"
+        [width]=16
+        [height]=16
+        class="toggle-icon"
+        [alt]="option.label || 'icon'"
+      />
+
+      <i
+        *ngIf="option.icon"
+        [class]="option.icon + ' toggle-icon-pi'"
+      ></i>
+
+      <span *ngIf="option.label" class="toggle-label">
+        {{ option.label }}
+      </span>
+    </div>
+  </ng-template>
+</p-selectButton>
