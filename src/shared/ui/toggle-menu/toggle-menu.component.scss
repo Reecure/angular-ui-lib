@@ -1,0 +1,96 @@
+@use '../../../shared/styles/variables' as *;
+
+:host {
+  display: inline-block;
+
+  --btn-group-bg: #{$white};
+  --btn-group-border-color: #{$light-blue};
+  --btn-group-radius: #{$border-radius-md};
+  --btn-group-padding: 4px;
+  --btn-group-gap: 4px;
+
+  --btn-bg: #{$white};
+  --btn-border: none;
+  --btn-color: #{$text-color};
+  --btn-font-size: #{$font-size-sm};
+  --btn-height: 28px;
+  --btn-padding: 0 16px;
+  --btn-width: 148px;
+  --btn-transition: all 0.2s ease;
+  --btn-focus-shadow: none;
+
+  --btn-checked-bg: #{$main-blue};
+  --btn-checked-color: #{$white};
+  --btn-checked-radius: #{$border-radius-xs};
+  --btn-checked-font-weight: #{$font-weight-bold};
+
+  --btn-content-gap: 6px;
+  --btn-icon-size: 20px;
+  --btn-label-font-size: #{$font-size-xs};
+  --btn-label-font-weight: #{$font-weight-regular};
+
+  --btn-icon-only-width: 32px;
+  --btn-icon-only-padding: 0;
+
+
+  ::ng-deep {
+    .p-selectbutton {
+      border-radius: var(--btn-group-radius);
+      background: var(--btn-group-bg);
+      border: 1px solid var(--btn-group-border-color);
+      gap: var(--btn-group-gap);
+      padding: var(--btn-group-padding);
+    }
+
+    .p-togglebutton {
+      background: var(--btn-bg);
+      border: var(--btn-border);
+      color: var(--btn-color);
+      font-size: var(--btn-font-size);
+      height: var(--btn-height);
+      padding: var(--btn-padding);
+      transition: var(--btn-transition);
+      width: var(--btn-width);
+
+      &.p-togglebutton-checked {
+        background-color: var(--btn-checked-bg);
+        border-radius: var(--btn-checked-radius) !important;
+        font-weight: var(--btn-checked-font-weight);
+        color: var(--btn-checked-color);
+      }
+
+      &:focus {
+        box-shadow: var(--btn-focus-shadow);
+      }
+    }
+
+    .p-button-label {
+      padding: 0;
+    }
+
+    .toggle-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--btn-content-gap);
+      line-height: 1;
+    }
+
+    .toggle-icon {
+      height: var(--btn-icon-size);
+      width: var(--btn-icon-size);
+    }
+
+    .toggle-label {
+      font-weight: var(--btn-label-font-weight);
+      font-size: var(--btn-label-font-size);
+    }
+  }
+
+  &.icon-only {
+    ::ng-deep .p-togglebutton {
+      width: var(--btn-icon-only-width);
+      padding: var(--btn-icon-only-padding);
+    }
+  }
+}

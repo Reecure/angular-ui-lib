@@ -1,0 +1,206 @@
+<div class="container">
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Selects</h3>
+    <div style="max-width: 100px;">
+      <app-custom-select
+        [(ngModel)]="selectedStatuses"
+        [options]="statusOptions"
+        optionValue="value"
+        placeholder="Виберіть статус"
+        [showHeader]="true"
+        [showFooter]="true"
+        [showSelectAllOption]="true"
+        [itemTemplate]="statusItemTemplate"
+      >
+      </app-custom-select>
+    </div>
+
+    <div style="max-width: 300px;">
+      <app-custom-select
+        [(ngModel)]="selectedStatuses"
+        [options]="statusOptions"
+        optionValue="value"
+        placeholder="Виберіть статус"
+        [showHeader]="false"
+        [showFooter]="false"
+        [showSelectAllOption]="false"
+        [itemTemplate]="statusItemTemplate"
+        displayMode="list"
+      >
+      </app-custom-select>
+    </div>
+  </div>
+
+  <ng-template #statusItemTemplate let-option>
+    <div class="status-option-item">
+      <span>{{ option.label }}</span>
+      <app-status-indicator [status]="option.color"></app-status-indicator>
+    </div>
+  </ng-template>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem; ">
+    <h3>Checkbox</h3>
+    <div>
+      <app-custom-checkbox
+        [checked]="isSubscribed"
+        (checkedChange)="isSubscribed = $event">
+      </app-custom-checkbox>
+    </div>
+    <div>
+      <app-custom-checkbox
+        [checked]="isAgreementAccepted"
+        (checkedChange)="isAgreementAccepted = $event"
+        label="agree">
+      </app-custom-checkbox>
+    </div>
+    <div>
+      <app-custom-checkbox [disabled]="true" [checked]="true" label="disabled"></app-custom-checkbox>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Indicators</h3>
+    <div style="display: flex; gap: 4px; ">
+      <app-status-indicator
+        [status]="IndicatorStatus.GREEN"
+      >
+      </app-status-indicator>
+      <app-status-indicator
+        [status]="IndicatorStatus.RED"
+      >
+      </app-status-indicator>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Chips</h3>
+    <div style="display: flex; gap: 4px; ">
+      <app-custom-chips
+        [status]="ChipsStatus.GREEN"
+        label="НОВІ: 1"
+      ></app-custom-chips>
+      <app-custom-chips
+        [status]="ChipsStatus.YELLOW"
+        label="В РОБОТІ: 6"
+      ></app-custom-chips>
+      <app-custom-chips
+        [status]="ChipsStatus.RED"
+        label="ЗАКРИТІ: 7"
+      ></app-custom-chips>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Statuses</h3>
+    <div style="display: flex; gap: 4px; ">
+      <app-level-indicator [level]="1">
+      </app-level-indicator>
+      <app-level-indicator [level]="2">
+      </app-level-indicator>
+      <app-level-indicator [level]="3">
+      </app-level-indicator>
+      <app-level-indicator [level]="4">
+      </app-level-indicator>
+      <app-level-indicator [level]="5">
+      </app-level-indicator>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Buttons</h3>
+    <div style="display: flex; gap: 4px; ">
+      <app-custom-button
+        type="primary"
+        [buttonType]="'button'">
+        <span>Button</span>
+      </app-custom-button>
+      <app-custom-button
+        type="primary"
+        [buttonType]="'submit'">
+        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.4444 3H4.55556C4.143 3 3.74733 3.16389 3.45561 3.45561C3.16389 3.74733 3 4.143 3 4.55556V15.4444C3 15.857 3.16389 16.2527 3.45561 16.5444C3.74733 16.8361 4.143 17 4.55556 17H15.4444C16.3 17 17 16.3 17 15.4444V4.55556C17 3.7 16.3 3 15.4444 3ZM13.1111 10.7778H10.7778V13.1111C10.7778 13.5389 10.4278 13.8889 10 13.8889C9.57222 13.8889 9.22222 13.5389 9.22222 13.1111V10.7778H6.88889C6.46111 10.7778 6.11111 10.4278 6.11111 10C6.11111 9.57222 6.46111 9.22222 6.88889 9.22222H9.22222V6.88889C9.22222 6.46111 9.57222 6.11111 10 6.11111C10.4278 6.11111 10.7778 6.46111 10.7778 6.88889V9.22222H13.1111C13.5389 9.22222 13.8889 9.57222 13.8889 10C13.8889 10.4278 13.5389 10.7778 13.1111 10.7778Z" fill="white"/>
+        </svg>
+        <span>Test</span>
+      </app-custom-button>
+      <app-custom-button
+        type="primary"
+        [buttonType]="'submit'">
+        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.4444 3H4.55556C4.143 3 3.74733 3.16389 3.45561 3.45561C3.16389 3.74733 3 4.143 3 4.55556V15.4444C3 15.857 3.16389 16.2527 3.45561 16.5444C3.74733 16.8361 4.143 17 4.55556 17H15.4444C16.3 17 17 16.3 17 15.4444V4.55556C17 3.7 16.3 3 15.4444 3ZM13.1111 10.7778H10.7778V13.1111C10.7778 13.5389 10.4278 13.8889 10 13.8889C9.57222 13.8889 9.22222 13.5389 9.22222 13.1111V10.7778H6.88889C6.46111 10.7778 6.11111 10.4278 6.11111 10C6.11111 9.57222 6.46111 9.22222 6.88889 9.22222H9.22222V6.88889C9.22222 6.46111 9.57222 6.11111 10 6.11111C10.4278 6.11111 10.7778 6.46111 10.7778 6.88889V9.22222H13.1111C13.5389 9.22222 13.8889 9.57222 13.8889 10C13.8889 10.4278 13.5389 10.7778 13.1111 10.7778Z" fill="white"/>
+        </svg>
+      </app-custom-button>
+      <app-custom-button
+        type="secondary"
+        [buttonType]="'submit'">
+        <span>Submit</span>
+      </app-custom-button>
+      <app-custom-button
+        type="outlined"
+        [buttonType]="'submit'">
+        <span>Submit</span>
+      </app-custom-button>
+      <app-custom-button
+        type="outlined-gray"
+        [buttonType]="'submit'">
+        <span>Submit</span>
+      </app-custom-button>
+    </div>
+  </div>
+
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Form</h3>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="display: flex; flex-direction: column; gap: 1rem;">
+      <app-custom-input
+        [(ngModel)]="userData.name"
+        [ngModelOptions]="{standalone: true}"
+        name="name"
+        placeholder="Ваше ім'я">
+      </app-custom-input>
+
+      <app-custom-input
+        formControlName="email"
+        placeholder="Ваш email"
+        type="email">
+      </app-custom-input>
+
+      <app-custom-input
+        formControlName="disabledEmail"
+        placeholder=""
+        type="email">
+      </app-custom-input>
+
+      <app-custom-button
+        type="primary"
+        [buttonType]="'submit'">
+        <span>Відправити</span>
+      </app-custom-button>
+    </form>
+  </div>
+
+  <div style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem;">
+    <h3>Togglers</h3>
+
+    <h3>With Icons</h3>
+    <app-toggle-menu
+      [isIcon]="true"
+      [(value)]="selectedView"
+      [options]="iconOptions">
+    </app-toggle-menu>
+    <p>Selected: <strong>{{ selectedView }}</strong></p>
+
+    <h3>Default</h3>
+    <app-toggle-menu
+      [(value)]="selectedRule"
+      [options]="textOptions">
+    </app-toggle-menu>
+    <p>Selected: <strong>{{ selectedRule }}</strong></p>
+
+    <h3>More options</h3>
+    <app-toggle-menu
+      [(value)]="selectedMode"
+      [options]="mixedOptions">
+    </app-toggle-menu>
+    <p>Selected: <strong>{{ selectedMode }}</strong></p>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+@use '../../../shared/styles/variables' as *;
+
+:host {
+  --input-border-color: transparent;
+  --input-focus-border-color: #{$main-blue};
+  --input-height: 32px;
+  --input-padding: 8px 12px;
+  --input-radius: #{$border-radius-sm};
+  --input-font-size: #{$font-size-sm};
+  --input-shadow:  #{$input-shadow};
+  --input-disabled:  #{$text-secondary};
+}
+
+.custom-input.p-inputtext {
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--input-padding);
+  border-radius: var(--input-radius);
+  font-size: var(--input-font-size);
+  line-height: 1;
+  color: #{$text-color};
+  background-color: #{$white};
+  border: 1px solid var(--input-border-color);
+  box-shadow: var(--input-shadow);
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--input-focus-border-color);
+  }
+
+  &:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    border-color: var(--input-focus-border-color);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    background-color: rgba(var(--input-disabled), 0.2);
+    cursor: not-allowed;
+  }
+
+  &[readonly] {
+    background-color: rgba(var(--input-disabled), 0.2);
+    cursor: not-allowed;
+  }
+}

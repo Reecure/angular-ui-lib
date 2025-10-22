@@ -1,0 +1,17 @@
+@use './shared/styles/index' as *;
+@import 'normalize.css';
+
+*{
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $background;
+  color: $black;
+}

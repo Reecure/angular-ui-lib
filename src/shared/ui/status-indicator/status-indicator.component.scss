@@ -1,0 +1,21 @@
+@use '../../../shared/styles/variables' as *;
+
+.status-circle {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--green {
+    background-color: $light-green;
+  }
+
+  &--red {
+    background-color: $light-red;
+  }
+
+  &--gray {
+    background-color: $text-color;
+  }
+}

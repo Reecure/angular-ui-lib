@@ -1,0 +1,11 @@
+<input
+  pInputText
+  [type]="type"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  [readonly]="readonly"
+  [value]="value"
+  (input)="onInput($event)"
+  (blur)="onTouched()"
+  [ngClass]="['custom-input', styleClass]"
+/>
